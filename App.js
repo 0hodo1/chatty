@@ -1,46 +1,33 @@
 import React from "react";
-// import Chats from './screens/Chats'
 import { NavigationContainer } from "@react-navigation/native";
-import { Text, Button } from "react-native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Chat from "./screens/Chats"
 
-const Home = ({ navigation }) => {
-  return (
-    <SafeAreaView>
-      <Text>Hi, Home Screen</Text>
-      <Button title="Go to Settings screens" onPress={() => {
-        navigation.push("Settings")
-      }} />
-    </SafeAreaView>
-  );
-};
 
-const Settings = ({navigation}) => {
-  return (
-    <SafeAreaView>
-      <Text>Hi, Settings Screen</Text>
-      <Button title="Go to Home screens" onPress={() => {
-        navigation.push("Home")
-      }} />
-    </SafeAreaView>
-  );
-};
+const Home = ()=>{
+  return(
+    <Text>Hi, Home screen</Text>
+  )
+}
 
-const MainStack = createNativeStackNavigator();
+const Settings = ()=>{
+  return(
+    <Text>Hi, Settings screen</Text>
+  )
+}
 
-const App = () => {
+const Tabs = createBottomTabNavigator()
+
+const App=()=>{
   return (
     <NavigationContainer>
-      <MainStack.Navigator>
-        <MainStack.Screen name="Home" component={Home}></MainStack.Screen>
-        <MainStack.Screen
-          name="Settings"
-          component={Settings}
-        ></MainStack.Screen>
-      </MainStack.Navigator>
+      <Tabs.Navigator>
+        <Tabs.Screen name="Home" component={Home}/>
+        <Tabs.Screen name="Settings" component={Settings}/>
+      </Tabs.Navigator>
     </NavigationContainer>
-  );
-};
+  )
+}
 
 export default App;
